@@ -103,8 +103,8 @@ j1 = len(o1)
 # print(s)
 # print(o1)
 
-c=0
-for i1 in range(20):
+
+for i1 in range(20): #j1
     s = o1[i1]
     #print(i1)
     #print(s)
