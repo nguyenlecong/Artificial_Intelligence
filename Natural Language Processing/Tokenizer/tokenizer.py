@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import re
 import os
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 '''tu dien & vietnamese stopword'''
@@ -11,6 +13,7 @@ f=f0.read()
 sw0 = open(r'vnstw.txt', 'r', encoding = 'utf8')
 sw=sw0.read()
 #print(sw)
+''''''
 
 
 '''file xml'''
@@ -21,13 +24,15 @@ sw=sw0.read()
 #     soup = soup.find_all('body') #tach body
 #     body1=re.sub('[.,:;!?"()-]', '', soup) #tach cau
 #     body=body1.lower() # dua ve chu thuong
+''''''
 
 
 '''Test'''
-body0 = u'(Dân trí) - 2014 có thể nói là năm đại hỷ của làng giải trí Việt khi nhiều tên tuổi nổi tiếng đều lần lượt lên xe hoa. Mỗi đám cưới mang một phong cách khác nhau nhưng có một điểm chung là đều thu hút sự quan tâm đặc biệt của công chúng.'
+body0 = u'(Dân trí) - 2014 có thể nói là năm đại hỷ của làng giải trí Việt khi nhiều tên tuổi nổi tiếng đều lần lượt lên xe hoa. Mỗi đám cưới mang một phong cách khác nhau nhưng có một điểm chung là đều thu hút sự quan tâm đặc biệt là của công chúng.'
 body1=re.sub('[.,:;!?"()-]', '', body0)
 body=body1.lower()
 #print(body)
+''''''
 
 
 '''tach tu''' 
@@ -89,13 +94,12 @@ while(i<j) and (not done):
     #print(o)
     #print(type(o))
 #print(o)
+''''''    
     
-    
-"loai bo stopword"
+
+'''loai bo stopword'''
 o1 = o.split(' ') #dua ve mang words
-j1 = len(o1)
 #print(o1)
-#print(j1)
 
 '''test'''
 # s = o1[19]
@@ -103,8 +107,7 @@ j1 = len(o1)
 # print(s)
 # print(o1)
 
-
-for i1 in range(20): #j1
+for i1 in range(20):
     s = o1[i1]
     #print(i1)
     #print(s)
@@ -112,10 +115,35 @@ for i1 in range(20): #j1
         #print(s)
         o1.remove(s)
 print(o1)
-# j2 = len(o1)
-# print(j2)
+#print(len(o1))
+''''''
 
 
 '''output file txt'''
 #     fn = open(r'output.txt', 'w')
 #     fn.write(o)
+''''''
+
+
+'''trực quan hóa'''
+'''đếm từ'''
+count = np.ones(len(o1))
+print("Số lượng các từ:")
+for i in range(len(o1)):
+    for j in range(i+1, len(o1)):
+        if (o1[i] == o1[j]):
+            count[i] = count[i]+1
+            #count = np.delete(count, j)
+    print(o1[i],":", count[i], "lần")
+
+
+'''plot'''
+divisions = o1
+print(divisions)
+divisions_average_marks = count
+
+plt.bar(divisions, divisions_average_marks)
+plt.title("Trực quan hóa")
+plt.xlabel("Các từ")
+plt.ylabel("Số lượng")
+plt.show()
