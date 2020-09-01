@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy import sparse
 
-'''
+
 # Reading user file
 u_cols = ['user_id', 'age', 'occuapation', ' zip_code']
 users = pd.read_csv('ml-100k/u.user', sep = '|', names = u_cols, encoding = 'latin-1')
@@ -28,7 +28,7 @@ items = pd.read_csv('ml-100k/u.item', sep='|', names=i_cols, encoding='latin-1')
 n_items = items.shape[0]
 #print ('Number of items:', n_items)
 #print(items.head())
-'''
+
 
 # Class CF
 class CF(object):
@@ -132,7 +132,7 @@ rs = CF(Y_data, k = 2, uuCF = 0)
 rs.fit()
 rs.print_recommendation()
 
-'''
+
 # Load data MovieLens 100k
 r_cols = ['user_id', 'moive_id', 'rating', 'unix_timestamp']
 
@@ -148,6 +148,7 @@ rate_test[:, :2] -= 1
 # User-based CF
 rs = CF(rate_train, k = 30, uuCF = 1)
 rs.fit()
+rs.print_recommendation()
 n_tests = rate_test.shape[0]
 SE = 0 # squared error
 for n in range(n_tests):
@@ -159,6 +160,7 @@ print ('User-based CF, RMSE =', RMSE)
 # Item-based CF
 rs = CF(rate_train, k = 30, uuCF = 0)
 rs.fit()
+rs.print_recommendation()
 n_tests = rate_test.shape[0]
 SE = 0 # squared error
 for n in range(n_tests):
@@ -166,4 +168,3 @@ for n in range(n_tests):
     SE += (pred - rate_test[n, 2])**2 
 RMSE = np.sqrt(SE/n_tests)
 print ('Item-based CF, RMSE =', RMSE)
-'''
