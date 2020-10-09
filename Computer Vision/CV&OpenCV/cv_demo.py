@@ -7,9 +7,9 @@ import numpy as np
 
 
 '''Load và xử lý'''
-# img = cv2.imread('orange.jpg')
-# img = cv2.imread('orange.jpg',cv2.IMREAD_GRAYSCALE)
-# cv2.imshow("orange", img)
+img = cv2.imread('orange.jpg')
+img = cv2.imread('orange.jpg',cv2.IMREAD_GRAYSCALE)
+cv2.imshow("orange", img)
 
 '''tách vật thể'''
 # min = np.array([0, 50,240])
@@ -18,8 +18,8 @@ import numpy as np
 # cv2.imshow('only orange', mask)
 # final = cv2.bitwise_and(img, img, mask = mask)
 # cv2.imshow('only orange', final)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 '''tách biên ảnh'''
 # img = cv2.imread('widow.jpg', 0)
