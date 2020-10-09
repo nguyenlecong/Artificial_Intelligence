@@ -1,0 +1,3 @@
+- Tesseract là một OCR (Optical Character Recognition) engine hàng đầu hiện nay.
+- Công cụ này hỗ trợ nhận diện kí tự của hơn 100 ngôn ngữ khác nhau, bao gồm cả tiếng Việt.
+Không những thế, chúng ta có thể huấn luyện chương trình dùng Tesseract để có thể nhận diện một ngôn ngữ nào đó.
